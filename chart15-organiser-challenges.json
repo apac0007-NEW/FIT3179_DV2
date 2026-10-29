@@ -1,0 +1,79 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Organisers face financial and regulatory pressure",
+    "subtitle": "Share of surveyed festival organisers reporting a severe or major impact, Soundcheck 2022–23 (survey sample n=51)."
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "Source Sans 3",
+    "axis": {
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3",
+      "domain": false,
+      "tickSize": 0,
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "gridColor": "#e8e5df"
+    },
+    "legend": {
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3"
+    },
+    "title": {
+      "font": "Bricolage Grotesque",
+      "fontSize": 17,
+      "anchor": "start",
+      "subtitleFont": "Source Sans 3",
+      "subtitleColor": "#59645e"
+    }
+  },
+  "width": 600,
+  "height": 220,
+  "data": {
+    "url": "data/organiser_challenges.json"
+  },
+  "mark": {
+    "type": "bar",
+    "cornerRadiusEnd": 4
+  },
+  "encoding": {
+    "y": {
+      "field": "challenge",
+      "type": "nominal",
+      "sort": "-x",
+      "title": null
+    },
+    "x": {
+      "field": "share",
+      "type": "quantitative",
+      "title": "Organisers reporting impact (%)",
+      "scale": {
+        "domain": [
+          0,
+          50
+        ]
+      }
+    },
+    "color": {
+      "condition": {
+        "test": "datum.share >= 39",
+        "value": "#c14f36"
+      },
+      "value": "#e5a34b"
+    },
+    "tooltip": [
+      {
+        "field": "challenge",
+        "type": "nominal"
+      },
+      {
+        "field": "share",
+        "type": "quantitative",
+        "title": "Organisers (%)"
+      }
+    ]
+  }
+}

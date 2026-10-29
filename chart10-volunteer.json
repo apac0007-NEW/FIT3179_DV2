@@ -1,0 +1,93 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Culture also depends on unpaid contribution",
+    "subtitle": "Among Australians participating in selected cultural activities, 2021–22. Measures have different bases; see labels."
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "Source Sans 3",
+    "axis": {
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3",
+      "domain": false,
+      "tickSize": 0,
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "gridColor": "#e8e5df"
+    },
+    "legend": {
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3"
+    },
+    "title": {
+      "font": "Bricolage Grotesque",
+      "fontSize": 17,
+      "anchor": "start",
+      "subtitleFont": "Source Sans 3",
+      "subtitleColor": "#59645e"
+    }
+  },
+  "width": 600,
+  "height": 240,
+  "data": {
+    "url": "data/cultural_volunteering.json"
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "color": "#c8d0ca",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "y": {
+          "field": "activity",
+          "type": "nominal",
+          "title": null
+        },
+        "x": {
+          "datum": 0,
+          "type": "quantitative"
+        },
+        "x2": {
+          "field": "rate",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 140,
+        "color": "#167c72"
+      },
+      "encoding": {
+        "y": {
+          "field": "activity",
+          "type": "nominal",
+          "title": null
+        },
+        "x": {
+          "field": "rate",
+          "type": "quantitative",
+          "title": "Share (%)"
+        },
+        "tooltip": [
+          {
+            "field": "activity",
+            "type": "nominal"
+          },
+          {
+            "field": "rate",
+            "type": "quantitative",
+            "title": "Share (%)"
+          }
+        ]
+      }
+    }
+  ]
+}

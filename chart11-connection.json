@@ -1,0 +1,83 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Most Australians report neighbourhood connection — but isolation remains",
+    "subtitle": "National social connection indicators (2024) alongside cultural participation indicators (2022). Different surveys and years; context, not causal evidence."
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "Source Sans 3",
+    "axis": {
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3",
+      "domain": false,
+      "tickSize": 0,
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "gridColor": "#e8e5df"
+    },
+    "legend": {
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3"
+    },
+    "title": {
+      "font": "Bricolage Grotesque",
+      "fontSize": 17,
+      "anchor": "start",
+      "subtitleFont": "Source Sans 3",
+      "subtitleColor": "#59645e"
+    }
+  },
+  "width": 600,
+  "height": 280,
+  "data": {
+    "url": "data/connection.json"
+  },
+  "mark": {
+    "type": "bar",
+    "cornerRadiusEnd": 4
+  },
+  "encoding": {
+    "y": {
+      "field": "measure",
+      "type": "nominal",
+      "sort": "-x",
+      "title": null
+    },
+    "x": {
+      "field": "rate",
+      "type": "quantitative",
+      "title": "Respondents (%)",
+      "scale": {
+        "domain": [
+          0,
+          100
+        ]
+      }
+    },
+    "color": {
+      "condition": {
+        "test": "datum.rate >= 75",
+        "value": "#167c72"
+      },
+      "value": "#e5a34b"
+    },
+    "tooltip": [
+      {
+        "field": "measure",
+        "type": "nominal"
+      },
+      {
+        "field": "rate",
+        "type": "quantitative",
+        "title": "Respondents (%)"
+      },
+      {
+        "field": "year",
+        "type": "nominal"
+      }
+    ]
+  }
+}

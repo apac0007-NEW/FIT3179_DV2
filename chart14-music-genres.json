@@ -1,0 +1,73 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Festival diversity is audible in the genre mix",
+    "subtitle": "Share of mapped Australian music festivals listing each genre, 2022–23. Festivals can list more than one genre, so percentages do not sum to 100."
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "Source Sans 3",
+    "axis": {
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3",
+      "domain": false,
+      "tickSize": 0,
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "gridColor": "#e8e5df"
+    },
+    "legend": {
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3"
+    },
+    "title": {
+      "font": "Bricolage Grotesque",
+      "fontSize": 17,
+      "anchor": "start",
+      "subtitleFont": "Source Sans 3",
+      "subtitleColor": "#59645e"
+    }
+  },
+  "width": 600,
+  "height": 350,
+  "data": {
+    "url": "data/music_genres.json"
+  },
+  "mark": {
+    "type": "bar",
+    "cornerRadiusEnd": 4,
+    "color": "#167c72"
+  },
+  "encoding": {
+    "y": {
+      "field": "genre",
+      "type": "nominal",
+      "sort": "-x",
+      "title": null
+    },
+    "x": {
+      "field": "share",
+      "type": "quantitative",
+      "title": "Share of festivals listing genre (%)",
+      "scale": {
+        "domain": [
+          0,
+          25
+        ]
+      }
+    },
+    "tooltip": [
+      {
+        "field": "genre",
+        "type": "nominal"
+      },
+      {
+        "field": "share",
+        "type": "quantitative",
+        "title": "Share (%)"
+      }
+    ]
+  }
+}

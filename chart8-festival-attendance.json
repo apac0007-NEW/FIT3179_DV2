@@ -1,0 +1,83 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Attendance is rising, but cost keeps people out",
+    "subtitle": "Creative Australia’s 2025 national survey: attendance and cost-related barriers. Each row is a separate survey measure."
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "Source Sans 3",
+    "axis": {
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3",
+      "domain": false,
+      "tickSize": 0,
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "gridColor": "#e8e5df"
+    },
+    "legend": {
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3"
+    },
+    "title": {
+      "font": "Bricolage Grotesque",
+      "fontSize": 17,
+      "anchor": "start",
+      "subtitleFont": "Source Sans 3",
+      "subtitleColor": "#59645e"
+    }
+  },
+  "width": 600,
+  "height": 180,
+  "data": {
+    "url": "data/latest_access.json"
+  },
+  "mark": {
+    "type": "bar",
+    "cornerRadiusEnd": 4
+  },
+  "encoding": {
+    "y": {
+      "field": "measure",
+      "type": "nominal",
+      "title": null,
+      "sort": "-x"
+    },
+    "x": {
+      "field": "rate",
+      "type": "quantitative",
+      "title": "Australians (%)",
+      "scale": {
+        "domain": [
+          0,
+          100
+        ]
+      }
+    },
+    "color": {
+      "condition": {
+        "test": "datum.measure === 'Attended at least one live arts event or festival'",
+        "value": "#167c72"
+      },
+      "value": "#e5a34b"
+    },
+    "tooltip": [
+      {
+        "field": "measure",
+        "type": "nominal"
+      },
+      {
+        "field": "rate",
+        "type": "quantitative",
+        "title": "Respondents (%)"
+      },
+      {
+        "field": "year",
+        "type": "nominal"
+      }
+    ]
+  }
+}

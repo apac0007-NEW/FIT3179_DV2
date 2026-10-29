@@ -1,0 +1,96 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "The participation gap is widest among younger adults",
+    "subtitle": "Cultural activity participation by age and sex, 2021–22."
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "Source Sans 3",
+    "axis": {
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3",
+      "domain": false,
+      "tickSize": 0,
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "gridColor": "#e8e5df"
+    },
+    "legend": {
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3"
+    },
+    "title": {
+      "font": "Bricolage Grotesque",
+      "fontSize": 17,
+      "anchor": "start",
+      "subtitleFont": "Source Sans 3",
+      "subtitleColor": "#59645e"
+    }
+  },
+  "width": 500,
+  "height": 260,
+  "data": {
+    "url": "data/age_sex.json"
+  },
+  "mark": {
+    "type": "rect",
+    "stroke": "#fff",
+    "strokeWidth": 3,
+    "cornerRadius": 4
+  },
+  "encoding": {
+    "x": {
+      "field": "sex",
+      "type": "nominal",
+      "title": null
+    },
+    "y": {
+      "field": "age",
+      "type": "nominal",
+      "sort": [
+        "15–24",
+        "25–34",
+        "35–44",
+        "45–54",
+        "55–64",
+        "65+"
+      ],
+      "title": null
+    },
+    "color": {
+      "field": "rate",
+      "type": "quantitative",
+      "title": "Participation (%)",
+      "scale": {
+        "scheme": "tealblues",
+        "domain": [
+          15,
+          55
+        ]
+      }
+    },
+    "text": {
+      "field": "rate",
+      "type": "quantitative",
+      "format": ".1f"
+    },
+    "tooltip": [
+      {
+        "field": "age",
+        "type": "nominal"
+      },
+      {
+        "field": "sex",
+        "type": "nominal"
+      },
+      {
+        "field": "rate",
+        "type": "quantitative",
+        "title": "Participation (%)"
+      }
+    ]
+  }
+}

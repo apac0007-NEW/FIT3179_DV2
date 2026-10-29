@@ -1,0 +1,74 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Remote Australians are most likely to want more cultural events",
+    "subtitle": "Share who would like to attend more creative, cultural and artistic events, 2022."
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "Source Sans 3",
+    "axis": {
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3",
+      "domain": false,
+      "tickSize": 0,
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "gridColor": "#e8e5df"
+    },
+    "legend": {
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3"
+    },
+    "title": {
+      "font": "Bricolage Grotesque",
+      "fontSize": 17,
+      "anchor": "start",
+      "subtitleFont": "Source Sans 3",
+      "subtitleColor": "#59645e"
+    }
+  },
+  "width": 600,
+  "height": 200,
+  "data": {
+    "url": "data/region_demand.json"
+  },
+  "mark": {
+    "type": "point",
+    "filled": true,
+    "size": 180,
+    "color": "#c14f36"
+  },
+  "encoding": {
+    "y": {
+      "field": "area",
+      "type": "nominal",
+      "sort": "-x",
+      "title": null
+    },
+    "x": {
+      "field": "wantMore",
+      "type": "quantitative",
+      "title": "Want to attend more (%)",
+      "scale": {
+        "domain": [
+          0,
+          75
+        ]
+      }
+    },
+    "tooltip": [
+      {
+        "field": "area",
+        "type": "nominal"
+      },
+      {
+        "field": "wantMore",
+        "type": "quantitative",
+        "title": "Want to attend more (%)"
+      }
+    ]
+  }
+}

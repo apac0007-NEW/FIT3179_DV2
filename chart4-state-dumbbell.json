@@ -1,0 +1,120 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Most states and territories saw participation rise",
+    "subtitle": "Share participating in cultural activities, 2017–18 and 2021–22. A small shift is not necessarily statistically significant."
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "Source Sans 3",
+    "axis": {
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3",
+      "domain": false,
+      "tickSize": 0,
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "gridColor": "#e8e5df"
+    },
+    "legend": {
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3"
+    },
+    "title": {
+      "font": "Bricolage Grotesque",
+      "fontSize": 17,
+      "anchor": "start",
+      "subtitleFont": "Source Sans 3",
+      "subtitleColor": "#59645e"
+    }
+  },
+  "width": 600,
+  "height": 300,
+  "data": {
+    "url": "data/states.json"
+  },
+  "encoding": {
+    "y": {
+      "field": "abbr",
+      "type": "nominal",
+      "sort": "-x",
+      "title": null
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "color": "#c8d0ca",
+        "strokeWidth": 3
+      },
+      "encoding": {
+        "x": {
+          "field": "rate17",
+          "type": "quantitative",
+          "title": "Adults participating (%)",
+          "scale": {
+            "domain": [
+              20,
+              48
+            ]
+          }
+        },
+        "x2": {
+          "field": "rate21",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "circle",
+        "size": 90,
+        "color": "#e5a34b"
+      },
+      "encoding": {
+        "x": {
+          "field": "rate17",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal"
+          },
+          {
+            "field": "rate17",
+            "type": "quantitative",
+            "title": "2017–18 (%)"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "circle",
+        "size": 90,
+        "color": "#167c72"
+      },
+      "encoding": {
+        "x": {
+          "field": "rate21",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal"
+          },
+          {
+            "field": "rate21",
+            "type": "quantitative",
+            "title": "2021–22 (%)"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Festival density varies beyond raw totals",
+    "subtitle": "Circle size and colour show mapped music festivals per 10,000 residents, 2022–23."
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "Source Sans 3",
+    "axis": {
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3",
+      "domain": false,
+      "tickSize": 0,
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "gridColor": "#e8e5df"
+    },
+    "legend": {
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3"
+    },
+    "title": {
+      "font": "Bricolage Grotesque",
+      "fontSize": 17,
+      "anchor": "start",
+      "subtitleFont": "Source Sans 3",
+      "subtitleColor": "#59645e"
+    }
+  },
+  "width": 600,
+  "height": 420,
+  "projection": {
+    "type": "albers",
+    "rotate": [
+      -134,
+      0
+    ],
+    "center": [
+      0,
+      -27
+    ],
+    "parallels": [
+      -18,
+      -36
+    ],
+    "scale": 800
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/states.geojson",
+        "format": {
+          "property": "features"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#f0eee8",
+        "stroke": "#fff",
+        "strokeWidth": 1
+      }
+    },
+    {
+      "data": {
+        "url": "data/states.json"
+      },
+      "mark": {
+        "type": "circle",
+        "opacity": 0.9,
+        "stroke": "#fff",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "size": {
+          "field": "festivalsPer10k",
+          "type": "quantitative",
+          "title": "Festivals per 10,000 residents",
+          "scale": {
+            "range": [
+              80,
+              1600
+            ],
+            "domain": [
+              0.15,
+              0.62
+            ]
+          }
+        },
+        "color": {
+          "field": "festivalsPer10k",
+          "type": "quantitative",
+          "title": "Per 10,000 residents",
+          "scale": {
+            "scheme": "oranges",
+            "domain": [
+              0.15,
+              0.62
+            ]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State / territory"
+          },
+          {
+            "field": "musicFestivals",
+            "type": "quantitative",
+            "title": "Mapped festivals"
+          },
+          {
+            "field": "festivalsPer10k",
+            "type": "quantitative",
+            "title": "Festivals per 10,000 residents"
+          }
+        ]
+      }
+    }
+  ]
+}

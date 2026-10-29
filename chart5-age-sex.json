@@ -1,0 +1,100 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Women report higher cultural participation in every adult age group",
+    "subtitle": "Selected cultural activities, 2021–22. This includes community arts-related participation but is not a festival-only measure."
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "Source Sans 3",
+    "axis": {
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3",
+      "domain": false,
+      "tickSize": 0,
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "gridColor": "#e8e5df"
+    },
+    "legend": {
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3"
+    },
+    "title": {
+      "font": "Bricolage Grotesque",
+      "fontSize": 17,
+      "anchor": "start",
+      "subtitleFont": "Source Sans 3",
+      "subtitleColor": "#59645e"
+    }
+  },
+  "width": 600,
+  "height": 280,
+  "data": {
+    "url": "data/age_sex.json"
+  },
+  "mark": "bar",
+  "encoding": {
+    "y": {
+      "field": "age",
+      "type": "nominal",
+      "sort": [
+        "15–24",
+        "25–34",
+        "35–44",
+        "45–54",
+        "55–64",
+        "65+"
+      ],
+      "title": null
+    },
+    "x": {
+      "field": "signed",
+      "type": "quantitative",
+      "title": "Share participating (%)",
+      "axis": {
+        "labelExpr": "abs(datum.value) + \"%\""
+      },
+      "scale": {
+        "domain": [
+          -55,
+          55
+        ]
+      }
+    },
+    "color": {
+      "field": "sex",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "Men",
+          "Women"
+        ],
+        "range": [
+          "#e5a34b",
+          "#167c72"
+        ]
+      },
+      "legend": {
+        "orient": "bottom"
+      }
+    },
+    "tooltip": [
+      {
+        "field": "sex",
+        "type": "nominal"
+      },
+      {
+        "field": "age",
+        "type": "nominal"
+      },
+      {
+        "field": "rate",
+        "type": "quantitative",
+        "title": "Participation (%)"
+      }
+    ]
+  }
+}

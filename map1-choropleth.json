@@ -1,0 +1,115 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "535 music festivals were mapped across Australia",
+    "subtitle": "Festival locations by state/territory, 2022–23. This is a national music-festival dataset, not a count of every community celebration."
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "Source Sans 3",
+    "axis": {
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3",
+      "domain": false,
+      "tickSize": 0,
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "gridColor": "#e8e5df"
+    },
+    "legend": {
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3"
+    },
+    "title": {
+      "font": "Bricolage Grotesque",
+      "fontSize": 17,
+      "anchor": "start",
+      "subtitleFont": "Source Sans 3",
+      "subtitleColor": "#59645e"
+    }
+  },
+  "width": 600,
+  "height": 420,
+  "projection": {
+    "type": "albers",
+    "rotate": [
+      -134,
+      0
+    ],
+    "center": [
+      0,
+      -27
+    ],
+    "parallels": [
+      -18,
+      -36
+    ],
+    "scale": 800
+  },
+  "data": {
+    "url": "data/states.geojson",
+    "format": {
+      "property": "features"
+    }
+  },
+  "transform": [
+    {
+      "lookup": "properties.STATE_NAME",
+      "from": {
+        "data": {
+          "url": "data/states.json"
+        },
+        "key": "state",
+        "fields": [
+          "musicFestivals",
+          "festivalsPer10k",
+          "rate21",
+          "rate17",
+          "change",
+          "abbr"
+        ]
+      }
+    }
+  ],
+  "mark": {
+    "type": "geoshape",
+    "stroke": "#fff",
+    "strokeWidth": 1
+  },
+  "encoding": {
+    "color": {
+      "field": "musicFestivals",
+      "type": "quantitative",
+      "title": "Mapped music festivals",
+      "scale": {
+        "scheme": "tealblues",
+        "domain": [
+          0,
+          150
+        ]
+      },
+      "legend": {
+        "orient": "bottom"
+      }
+    },
+    "tooltip": [
+      {
+        "field": "properties.STATE_NAME",
+        "type": "nominal",
+        "title": "State / territory"
+      },
+      {
+        "field": "musicFestivals",
+        "type": "quantitative",
+        "title": "Mapped music festivals"
+      },
+      {
+        "field": "festivalsPer10k",
+        "type": "quantitative",
+        "title": "Festivals per 10,000 residents"
+      }
+    ]
+  }
+}

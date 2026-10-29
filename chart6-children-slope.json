@@ -1,0 +1,94 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Children’s creative participation changed between survey waves",
+    "subtitle": "Selected activities, 2017–18 vs 2021–22. The survey period overlapped COVID-19 restrictions."
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "Source Sans 3",
+    "axis": {
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3",
+      "domain": false,
+      "tickSize": 0,
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "gridColor": "#e8e5df"
+    },
+    "legend": {
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3"
+    },
+    "title": {
+      "font": "Bricolage Grotesque",
+      "fontSize": 17,
+      "anchor": "start",
+      "subtitleFont": "Source Sans 3",
+      "subtitleColor": "#59645e"
+    }
+  },
+  "width": 600,
+  "height": 300,
+  "data": {
+    "url": "data/children.json"
+  },
+  "mark": {
+    "type": "line",
+    "point": {
+      "filled": true,
+      "size": 70
+    },
+    "strokeWidth": 2
+  },
+  "encoding": {
+    "x": {
+      "field": "period",
+      "type": "nominal",
+      "sort": [
+        "2017–18",
+        "2021–22"
+      ],
+      "title": null
+    },
+    "y": {
+      "field": "rate",
+      "type": "quantitative",
+      "title": "Children participating (%)"
+    },
+    "color": {
+      "field": "activity",
+      "type": "nominal",
+      "legend": {
+        "orient": "bottom",
+        "columns": 2
+      }
+    },
+    "detail": {
+      "field": "activity",
+      "type": "nominal"
+    },
+    "tooltip": [
+      {
+        "field": "activity",
+        "type": "nominal"
+      },
+      {
+        "field": "period",
+        "type": "nominal"
+      },
+      {
+        "field": "rate",
+        "type": "quantitative",
+        "title": "Participation (%)"
+      }
+    ]
+  },
+  "transform": [
+    {
+      "filter": "datum.activity !== 'Screen-based activities' && datum.activity !== 'Reading for pleasure'"
+    }
+  ]
+}

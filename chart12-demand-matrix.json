@@ -1,0 +1,84 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Who wants more cultural events?",
+    "subtitle": "National survey results show unmet demand differs by gender and geography (2022)."
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "Source Sans 3",
+    "axis": {
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3",
+      "domain": false,
+      "tickSize": 0,
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "gridColor": "#e8e5df"
+    },
+    "legend": {
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3"
+    },
+    "title": {
+      "font": "Bricolage Grotesque",
+      "fontSize": 17,
+      "anchor": "start",
+      "subtitleFont": "Source Sans 3",
+      "subtitleColor": "#59645e"
+    }
+  },
+  "width": 560,
+  "height": 240,
+  "data": {
+    "url": "data/demand.json"
+  },
+  "mark": {
+    "type": "rect",
+    "stroke": "#fff",
+    "strokeWidth": 3,
+    "cornerRadius": 4
+  },
+  "encoding": {
+    "x": {
+      "field": "kind",
+      "type": "nominal",
+      "title": null
+    },
+    "y": {
+      "field": "measure",
+      "type": "nominal",
+      "title": null,
+      "sort": "-x"
+    },
+    "color": {
+      "field": "rate",
+      "type": "quantitative",
+      "title": "Want to attend more (%)",
+      "scale": {
+        "scheme": "oranges",
+        "domain": [
+          40,
+          65
+        ]
+      }
+    },
+    "tooltip": [
+      {
+        "field": "measure",
+        "type": "nominal"
+      },
+      {
+        "field": "kind",
+        "type": "nominal"
+      },
+      {
+        "field": "rate",
+        "type": "quantitative",
+        "title": "Want to attend more (%)"
+      }
+    ]
+  }
+}
